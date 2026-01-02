@@ -1,0 +1,6 @@
+.github/
+.vscode/
+default.project.json
+build.project.json
+*.md
+*.yml

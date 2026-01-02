@@ -1,0 +1,17 @@
+{
+    "name": "queues",
+    "tree": {
+        "$className": "DataModel",
+        "ReplicatedStorage": {
+            "queues": {
+                "$path": "src/__index.luau",
+                "libs": {
+                    "$path": "src/libs"
+                },
+                "log": {
+                    "$path": "src/__log__"
+                }
+            }
+        }
+    }
+}
