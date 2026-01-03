@@ -1,11 +1,11 @@
 --[[
 	******************************************************************************
-	* @file		: .../queues/src/libs/priorityMax.lua
+	* @file		: .../src/libs/priorityMax.lua
 	* @author	: Cod2rDude
 	* @date		: December 27 2025
 	* @lastEdit	: December 31 2025 @ 16:35
 	* @brief	: Priority max queue implementation with binary heap in luau.
-	* @version	: 1.0.2
+	* @version	: 1.0.0
 	******************************************************************************
 	* @attention
 	*
@@ -232,7 +232,7 @@ end
 function priorityMax_module:clean()
 	local self = self :: priorityMax_queue
 	
-	table.clone(self.queueTable)
+	table.clear(self.queueTable)
 	self.currentSize = 0
 end
 

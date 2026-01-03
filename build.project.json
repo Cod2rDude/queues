@@ -1,18 +1,18 @@
 {
     "name": "queues",
     "tree": {
-        "$className": "Folder",
-        "src": {
-            "$className": "Folder",
-            "$path": "src"
+        "$path": "src/__index.luau",
+        "$properties": {
+            "Attributes": {
+                "version": {"String": "1.0.0"}
+            }
         },
         "libs": {
             "$className": "Folder",
-            "$path": "libs"
+            "$path": "src/libs"
         },
-        "tests": {
-            "$className": "Folder",
-            "$path": "tests"
+        "log": {
+            "$path": "src/__log__"
         }
     }
 }

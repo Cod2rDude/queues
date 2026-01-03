@@ -8,7 +8,7 @@ end
 return function()
 	echo("Starting.")
 	
-	local fifoLibrary	= require(script.Parent.Parent.libs.fifo)
+	local fifoLibrary	=  require(script.Parent.Parent.libs.fifo)
 	
 	local myFifoQueue1	= fifoLibrary.new(512)
 	

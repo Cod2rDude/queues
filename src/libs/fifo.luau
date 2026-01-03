@@ -1,11 +1,11 @@
 --[[
 	******************************************************************************
-	* @file		: .../queues/src/libs/fifo.luau
+	* @file		: .../src/libs/fifo.luau
 	* @author	: Cod2rDude
 	* @date		: December 24 2025
 	* @lastEdit	: December 31 2025 @ 16:20
 	* @brief	: Fifo queue implementation in luau.
-	* @version	: 1.0.6
+	* @version	: 1.0.0
 	******************************************************************************
 	* @attention
 	*
@@ -81,11 +81,6 @@ end
 ]]
 function fifo_module:size()
     local self = self :: fifo_queue
-
-    -- yok amk githubla hesap açıyon
-    -- he
-    -- sitede zaten extensions için bi yer var ordan direk indirebiliyon otomatik kuryo
-    --
 
 	return self.currentSize
 end

@@ -3,7 +3,7 @@
 	* @name			:	queues
 	* @authors		:	Cod2rDude
 	* @date			:	November 24 2025
-	* @lastEdit		:	December 31 2025
+	* @lastEdit		:	January 3 2025
 	* @brief		:	A package containing useful queue implementations.
 	* @version		:	1.0.0
 	******************************************************************************
@@ -24,8 +24,6 @@ local libs = script.libs
 
 --queues.src.__index
 return {
-	fifo = require(libs.fifo),
-	priorityMax = require(libs.priorityMax),
+	fifo		= require(libs.fifo),
+	priorityMax	= require(libs.priorityMax),
 }
-
--- broski git test

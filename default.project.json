@@ -3,13 +3,26 @@
     "tree": {
         "$className": "DataModel",
         "ReplicatedStorage": {
-            "queues": {
-                "$path": "src/__index.luau",
-                "libs": {
-                    "$path": "src/libs"
-                },
-                "log": {
-                    "$path": "src/__log__"
+            "replicated": {
+                "$className": "Folder",
+                "packages": {
+                    "$className": "Folder",
+                    "queues": {
+                        "$properties": {
+                            "Attributes": {
+                                "version": {
+                                    "String": "1.0.0"
+                                }
+                            }
+                        },
+                        "$path": "src/__index.luau",
+                        "libs": {
+                            "$path": "src/libs"
+                        },
+                        "log": {
+                            "$path": "src/__log__"
+                        }
+                    }
                 }
             }
         }

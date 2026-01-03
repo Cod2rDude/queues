@@ -4,3 +4,6 @@ default.project.json
 build.project.json
 *.md
 *.yml
+.git/
+LICENSE
+tests/
