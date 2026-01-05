@@ -7,6 +7,7 @@
     </a>
     <img src="https://img.shields.io/badge/Language-Luau-2C3E50?style=&logo=lua" alt="Luau">
     <img src="https://img.shields.io/badge/Maintained%3F-Sometimes-green.svg" alt="Luau">
+    <img src="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-brightgreen" alt="Luau">
 </div>
 <div align="center">
     Useful queue implementations
