@@ -41,7 +41,7 @@ I needed to use queues while developing some libraries and i was like why dont i
     In current version (1.5.0) it only features
     <a href="./src/libs/fifo.luau">FIFO</a>,
     <a href="./src/libs/priorityMax.luau">priority max</a> and a
-    <a href="./src/libs/priorityMin.luau">priority in</a> 
+    <a href="./src/libs/priorityMin.luau">priority min</a> 
     queue implementation.
     <br/><br/>
     <div align="center">
