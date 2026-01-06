@@ -1,15 +1,17 @@
+--!nolint LocalShadow
+
 --[[
 	******************************************************************************
 	* @file		: .../src/libs/fifo.luau
 	* @author	: Cod2rDude
 	* @date		: December 24 2025
-	* @lastEdit	: December 31 2025 @ 16:20
+	* @lastEdit	: January 6 2025 @ 15:08
 	* @brief	: Fifo queue implementation in luau.
-	* @version	: 1.0.0
+	* @version	: 1.0.1
 	******************************************************************************
 	* @attention
 	*
-	* Copyright © 2025 Axon Corporation.
+	* Copyright © 2026 Axon Corporation.
 	* All rights reserved.
 	*
 	* This software is licensed under terms that can be found in the LICENSE file
@@ -133,11 +135,11 @@ function fifo_module:enqueue(item : any)
 	local self = self :: fifo_queue
 
 	if item == nil then
-		return false
+		return
 	end
 
 	if self:isFull() then
-		return false
+		return
 	end
 
 	self.tail = (self.tail % self.maxItems) + 1

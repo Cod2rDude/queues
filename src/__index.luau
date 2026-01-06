@@ -3,13 +3,13 @@
 	* @name			:	queues
 	* @authors		:	Cod2rDude
 	* @date			:	November 24 2025
-	* @lastEdit		:	January 3 2025
+	* @lastEdit		:	January 6 2025
 	* @brief		:	A package containing useful queue implementations.
-	* @version		:	1.0.0
+	* @version		:	1.5.0
 	******************************************************************************
 	* @attention
 	*
-	* Copyright © 2025 Axon Corporation.
+	* Copyright © 2026 Axon Corporation.
 	* All rights reserved.
 	*
 	* This software is licensed under terms that can be found in the LICENSE file
@@ -26,4 +26,5 @@ local libs = script.libs
 return {
 	fifo		= require(libs.fifo),
 	priorityMax	= require(libs.priorityMax),
+	priorityMin = require(libs.priorityMin)
 }

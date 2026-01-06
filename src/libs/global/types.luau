@@ -21,4 +21,12 @@ export type priorityMax_queue	=
 		currentSize			: number,
 	}
 
+export type priorityMin_queue	=
+	{
+		queueTable			: { [number] : {any | number} };
+		
+		maxItems 			: number,
+		currentSize			: number,
+	}
+
 return types

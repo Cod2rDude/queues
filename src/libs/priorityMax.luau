@@ -1,15 +1,17 @@
+--!nolint LocalShadow
+
 --[[
 	******************************************************************************
 	* @file		: .../src/libs/priorityMax.lua
 	* @author	: Cod2rDude
 	* @date		: December 27 2025
-	* @lastEdit	: December 31 2025 @ 16:35
+	* @lastEdit	: January 6 2026 @ 16:35
 	* @brief	: Priority max queue implementation with binary heap in luau.
-	* @version	: 1.0.0
+	* @version	: 1.0.1
 	******************************************************************************
 	* @attention
 	*
-	* Copyright © 2025 Axon Corporation.
+	* Copyright © 2026 Axon Corporation.
 	* All rights reserved.
 	*
 	* This software is licensed under terms that can be found in the LICENSE file
@@ -150,7 +152,7 @@ function priorityMax_module:enqueue(item : any, priority : number)
 	local self = self :: priorityMax_queue
 	
 	if self:isFull() then
-		return nil
+		return
 	end
 	
 	self.currentSize += 1
