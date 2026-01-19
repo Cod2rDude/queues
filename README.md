@@ -1,6 +1,6 @@
 <h1 id="queues" align="center">queues</h1>
 <div align="center">
-    <img src="https://img.shields.io/badge/version-1.5.0-orange" alt="Version">
+    <img src="https://img.shields.io/badge/version-2.0.0-orange" alt="Version">
     <br/>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
@@ -21,11 +21,8 @@
 - [Usage](#usage)
   - [FIFO](#fifo)
   - [Priority Max](#priority-max)
-  - [Priority Min](#priority-min)
 - [API](#api)
-  - [FIFO API](#fifo-api)
-  - [Priority Max API](#priority-max-api)
-  - [Priority Min API](#priority-min-api)
+- [TODO For me](#todo-for-me)
 - [Found a Bug?](#found-a-bug)
 - [Contribution](#contribution)
   - [Contributing](#contributing)
@@ -38,10 +35,9 @@ I needed to use queues while developing some libraries and i was like why dont i
 
 ## Features
 <div>
-    In current version (1.5.0) it only features
-    <a href="./src/libs/fifo.luau">FIFO</a>,
+    In current version (2.0.0) it only features
+    <a href="./src/libs/fifo.luau">FIFO</a> and
     <a href="./src/libs/priorityMax.luau">priority max</a> and a
-    <a href="./src/libs/priorityMin.luau">priority min</a> 
     queue implementation.
     <br/><br/>
     <div align="center">
@@ -67,16 +63,12 @@ I needed to use queues while developing some libraries and i was like why dont i
                 <td><code>O(log n)</code></td>
                 <td><code>O(n)</code></td>
             </tr>
-            <tr>
-                <td><b>Priority Min</b></td>
-                <td><code>O(log n)</code></td>
-                <td><code>O(log n)</code></td>
-                <td><code>O(n)</code></td>
-            </tr>
         </tbody>
     </table>
     </div>
 </div>
+
+Check out time complexities: [Desmos Time Complexities](https://www.desmos.com/calculator/dlj5jkejgw)
 
 ## Installation
 To install this to your computer you have this options;
@@ -90,14 +82,14 @@ To install this to your computer you have this options;
     ```bash
     git submodule add https://github.com/Cod2rDude/queues [PATH]
     ```
-Wally will be added in future.
+Wally will be added in future (I hope).
 
 ## Usage
 ### FIFO
 ```lua
     local queues = require(path.to.module)
 
-    local size = 10 -- 2 <= size <= 512
+    local size = 10 -- 2 <= size <= 1024
     local myFifoQueue = queues.fifo.new(size)
 
     -- enqueing first item
@@ -114,7 +106,7 @@ Wally will be added in future.
 ```lua
     local queues = require(path.to.module)
 
-    local size = 10 -- 2 <= size <= 512
+    local size = 10 -- 2 <= size <= 1024
     local myPriorityQueue = queues.priorityMax.new(size)
 
     -- object, priority
@@ -127,396 +119,16 @@ Wally will be added in future.
     print(myPriorityQueue:dequeue()) -- low
 ```
 
-### Priority Min
-```lua
-    local queues = require(path.to.module)
-
-    local size = 10 -- 2 <= size <= 512
-    local myPriorityQueue = queues.priorityMin.new(size)
-
-    -- object, priority
-    myPriorityQueue:enqueue("high", 1)
-    myPriorityQueue:enqueue("low", 100)
-    myPriorityQueue:enqueue("mid", 50)
-
-    print(myPriorityQueue:dequeue()) -- high
-    print(myPriorityQueue:dequeue()) -- mid
-    print(myPriorityQueue:dequeue()) -- low
-```
-
 ## API
-Please check out source code for further info about api.
+Please check out source code for further info about api. (Sorry!)
 
-### FIFO API
-<div align="center">
-    <table width="75%">
-        <thead>
-            <tr>
-                <th align="left">Function</th>
-                <th align="left">Parameters</th>
-                <th align="left">Returns</th>
-                <th align="left">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>.new()</code></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@param: <code>maxItems</code></span>
-                            <br/><span>@type: <code>number</code></span>
-                            <br/><span>@brief: Size of queue</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>fifo_queue</code></span>
-                            <br/><span>@brief: New fifo queue object.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Creates a new fifo queue object.</td>
-            </tr>
-            <tr>
-                <td><code>:size()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>number</code></span>
-                            <br/><span>@brief: Current size of queue.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns the current size of queue.</td>
-            </tr>
-            <tr>
-                <td><code>:isEmpty()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>boolean</code></span>
-                            <br/><span>@brief: Returns true if queue is empty.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns currentSize == 0.</td>
-            </tr>
-            <tr>
-                <td><code>:isFull()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>boolean</code></span>
-                            <br/><span>@brief: Returns true if queue is full.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns currentSize == maxSize.</td>
-            </tr>
-            <tr>
-                <td><code>:peek()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Object at the head of queue..</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns the object at the head of queue without removing it.</td>
-            </tr>
-            <tr>
-                <td><code>:enqueue()</code></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Object to add to queue.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td></td>
-                <td>Puts a new object at the queue's tail.</td>
-            </tr>
-            <tr>
-                <td><code>:dequeue()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Removed object from queue's head.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Removes and returns the object at the head of queue.</td>
-            </tr>
-            <tr>
-                <td><code>:clean()</code></td>
-                <td></td>
-                <td></td>
-                <td>Clears the queue (resets).</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+(I plan to make a project to autoconvert it to a documentation automatically.)
 
-### Priority Max API
-<div align="center">
-    <table width="75%">
-        <thead>
-            <tr>
-                <th align="left">Function</th>
-                <th align="left">Parameters</th>
-                <th align="left">Returns</th>
-                <th align="left">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>.new()</code></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@param: <code>maxItems</code></span>
-                            <br/><span>@type: <code>number</code></span>
-                            <br/><span>@brief: Size of queue</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>priorityMax_queue</code></span>
-                            <br/><span>@brief: New priority max queue object.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Creates a new priority max queue object.</td>
-            </tr>
-            <tr>
-                <td><code>:size()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>number</code></span>
-                            <br/><span>@brief: Current size of queue.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns the current size of queue.</td>
-            </tr>
-            <tr>
-                <td><code>:isEmpty()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>boolean</code></span>
-                            <br/><span>@brief: Returns true if queue is empty.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns currentSize == 0.</td>
-            </tr>
-            <tr>
-                <td><code>:isFull()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>boolean</code></span>
-                            <br/><span>@brief: Returns true if queue is full.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns currentSize == maxSize.</td>
-            </tr>
-            <tr>
-                <td><code>:peek()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Object with highest priority in queue..</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns the object with highest priority in queue without removing it.</td>
-            </tr>
-            <tr>
-                <td><code>:enqueue()</code></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Object to add to queue.</span>
-                        </li>
-                        <li>
-                            <span>@type: <code>number</code></span>
-                            <br/><span>@brief: Priority of object.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td></td>
-                <td>Puts a new object at the queue.</td>
-            </tr>
-            <tr>
-                <td><code>:dequeue()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Removed object from queue with highest priority.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Removes and returns the object with highest priority in queue.</td>
-            </tr>
-            <tr>
-                <td><code>:clean()</code></td>
-                <td></td>
-                <td></td>
-                <td>Clears the queue (resets).</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-### Priority Min API
-<div align="center">
-    <table width="75%">
-        <thead>
-            <tr>
-                <th align="left">Function</th>
-                <th align="left">Parameters</th>
-                <th align="left">Returns</th>
-                <th align="left">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>.new()</code></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@param: <code>maxItems</code></span>
-                            <br/><span>@type: <code>number</code></span>
-                            <br/><span>@brief: Size of queue</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>priorityMin_queue</code></span>
-                            <br/><span>@brief: New priority min queue object.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Creates a new priority min queue object.</td>
-            </tr>
-            <tr>
-                <td><code>:size()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>number</code></span>
-                            <br/><span>@brief: Current size of queue.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns the current size of queue.</td>
-            </tr>
-            <tr>
-                <td><code>:isEmpty()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>boolean</code></span>
-                            <br/><span>@brief: Returns true if queue is empty.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns currentSize == 0.</td>
-            </tr>
-            <tr>
-                <td><code>:isFull()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>boolean</code></span>
-                            <br/><span>@brief: Returns true if queue is full.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns currentSize == maxSize.</td>
-            </tr>
-            <tr>
-                <td><code>:peek()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Object with lowest priority in queue..</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Returns the object with lowest priority in queue without removing it.</td>
-            </tr>
-            <tr>
-                <td><code>:enqueue()</code></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Object to add to queue.</span>
-                        </li>
-                        <li>
-                            <span>@type: <code>number</code></span>
-                            <br/><span>@brief: Priority of object.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td></td>
-                <td>Puts a new object at the queue.</td>
-            </tr>
-            <tr>
-                <td><code>:dequeue()</code></td>
-                <td></td>
-                <td>
-                    <ol>
-                        <li>
-                            <span>@type: <code>any</code></span>
-                            <br/><span>@brief: Removed object from queue with lowest priority.</span>
-                        </li>
-                    </ol>
-                </td>
-                <td>Removes and returns the object with lowest priority in queue.</td>
-            </tr>
-            <tr>
-                <td><code>:clean()</code></td>
-                <td></td>
-                <td></td>
-                <td>Clears the queue (resets).</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+## TODO For me
+* Add a consumer loop function to both queues.
+* Add a way to search for a specific item in both queues.
+* Let user remove a specific item (either an index or order or just an object) in both queues.
+* Add raw iteration to both queues.
 
 ## Found a Bug?
 If you encounter any issues or unexpected behavior, please let me know! Your feedback helps make this library more stable.
@@ -591,6 +203,7 @@ This project is licensed under [The MIT License](https://opensource.org/license/
 * **Wikipedia contributors.** (2024, November 25). *Circular buffer.* In Wikipedia, The Free Encyclopedia. Retrieved from https://en.wikipedia.org/wiki/Circular_buffer
 * **Wikipedia contributors.** (2024, December 1). *FIFO (computing and electronics).* In Wikipedia, The Free Encyclopedia. Retrieved from https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)
 * **Wikipedia contributors.** (2024, December 15). *Heap (data structure).* In Wikipedia, The Free Encyclopedia. Retrieved from https://en.wikipedia.org/wiki/Heap_(data_structure)
+* **GeeksforGeeks** (2025, October 21). *Binary Heap* Retrieved from https://www.geeksforgeeks.org/dsa/binary-heap/
 
 <div align="right">
     <a href="#queues">

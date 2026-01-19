@@ -11,7 +11,7 @@
                         "$properties": {
                             "Attributes": {
                                 "version": {
-                                    "String": "1.5.0"
+                                    "String": "2.0.0"
                                 }
                             }
                         },

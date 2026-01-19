@@ -2,7 +2,7 @@
 local types	= {}
 
 --// Lib Types
-export type fifo_queue		= 
+export type fifoQueue		= 
 	{
 		queueTable			: { [number] : any };
 		
@@ -13,15 +13,7 @@ export type fifo_queue		=
 		currentSize			: number,
 	}
 
-export type priorityMax_queue	=
-	{
-		queueTable			: { [number] : {any | number} };
-		
-		maxItems 			: number,
-		currentSize			: number,
-	}
-
-export type priorityMin_queue	=
+export type priorityMaxQueue	=
 	{
 		queueTable			: { [number] : {any | number} };
 		
